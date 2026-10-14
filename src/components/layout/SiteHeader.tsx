@@ -41,7 +41,7 @@ export const SiteHeader: React.FC = () => {
 
   const closeMenu = () => setIsMobileMenuOpen(false);
 
- return (
+  return (
     <>
       {/* Floating Pill-shaped Navbar (Bên trái - Có Hotline) */}
       <header
@@ -61,10 +61,10 @@ export const SiteHeader: React.FC = () => {
 
           <nav className="floating-navbar__nav" aria-label="Điều hướng chính">
             <ul className="floating-navbar__nav-list">
-              <li><a href="#hero" className="floating-navbar__nav-link">Home</a></li>
-              <li><a href="#accommodation" className="floating-navbar__nav-link">Product</a></li>
-              <li><a href="#about" className="floating-navbar__nav-link">About</a></li>
-              <li><a href="#contact" className="floating-navbar__nav-link">Pricing</a></li>
+              <li><a href="#hero" className="floating-navbar__nav-link">Trang chủ</a></li>
+              <li><a href="#accommodation" className="floating-navbar__nav-link">Không gian lưu trú</a></li>
+              <li><a href="#about" className="floating-navbar__nav-link">Thông tin</a></li>
+              <li><a href="#contact" className="floating-navbar__nav-link">Bảng giá &amp; Tư vấn</a></li>
             </ul>
           </nav>
 
@@ -111,7 +111,7 @@ export const SiteHeader: React.FC = () => {
         <div className="mobile-pill-menu__drawer">
           <div className="mobile-pill-menu__header">
             <div className="mobile-pill-menu__brand">
-              
+
               <img
                 src={siteMetadata.logoUrl}
                 alt="Ngủ Ấm Ở Đà Lạt Logo"
@@ -135,22 +135,22 @@ export const SiteHeader: React.FC = () => {
             <ul className="mobile-pill-menu__list">
               <li>
                 <a href="#hero" className="mobile-pill-menu__link" onClick={closeMenu}>
-                  Home (Trang chủ)
+                  Trang chủ
                 </a>
               </li>
               <li>
                 <a href="#accommodation" className="mobile-pill-menu__link" onClick={closeMenu}>
-                  Product (Không gian lưu trú)
+                  Không gian lưu trú
                 </a>
               </li>
               <li>
                 <a href="#about" className="mobile-pill-menu__link" onClick={closeMenu}>
-                  About (Về Ngủ Ấm)
+                  Thông tin
                 </a>
               </li>
               <li>
                 <a href="#contact" className="mobile-pill-menu__link" onClick={closeMenu}>
-                  Pricing (Bảng giá &amp; Tư vấn)
+                  Bảng giá &amp; Tư vấn
                 </a>
               </li>
             </ul>
