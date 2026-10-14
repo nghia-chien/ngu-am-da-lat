@@ -15,14 +15,8 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
   item,
   variant = 'detailed',
   heightLevel = 'tall',
-  index = 0,
 }) => {
   const [imgError, setImgError] = useState(false);
-
-  // Nhãn danh mục đánh số theo thứ tự giúp định vị không gian
-  const categoryLabels = ['01 • Không Gian Ngủ', '02 • Rạp Phim Thư Giãn', '03 • Bếp Ăn Gia Đình'];
-  const categoryBadge = categoryLabels[index % categoryLabels.length] || `0${index + 1} • Phòng Nghỉ`;
-
   // Số lượng đặc điểm hiển thị phù hợp với độ cao của từng card (600px / 500px / 400px)
   const featureLimit = heightLevel === 'tall' ? 3 : heightLevel === 'medium' ? 2 : 2;
 
@@ -63,7 +57,6 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
         <div className="deepseek-stagger-card__content">
           <div className="deepseek-stagger-card__header">
             <h3 className="deepseek-stagger-card__title">{item.name}</h3>
-            <p className="deepseek-stagger-card__sub">{item.subtitle}</p>
           </div>
 
           {/* Mô tả chi tiết cho card 600px và 500px để không bị trống */}
