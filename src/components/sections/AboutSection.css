@@ -1,0 +1,303 @@
+/* =========================================================
+   SECTION 3: ABOUT (CHI TIẾT THEO MOCKUP ĐÍNH KÈM)
+   - Thanh Ticker Marquee đen chạy chữ vô tận ở trên
+   - Nền be sáng ấm áp, 2 cột cân đối
+   - Đoạn văn thụt lề dưới tiêu đề
+   - Cụm CTA kích thích hành động mạnh mẽ
+   - Khối ảnh 1.jpg bo tròn góc lớn
+   ========================================================= */
+
+.wireframe-about {
+  background-color: #f3ece1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 1. THANH TICKER BANNER TRÊN CÙNG */
+.wireframe-about__ticker {
+  background-color: #1a1613;
+  color: #ffffff;
+  padding: 0.95rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  user-select: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.wireframe-about__ticker-track {
+  display: inline-flex;
+  gap: 3.5rem;
+  font-family: var(--font-sans);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-transform: lowercase;
+  color: #ffffff;
+  animation: tickerAboutScroll 20s linear infinite;
+  will-change: transform;
+}
+
+.wireframe-about__ticker:hover .wireframe-about__ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes tickerAboutScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* 2. VÙNG NỘI DUNG CHÍNH */
+.wireframe-about__main {
+  padding: 3rem 1.25rem 3.75rem 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .wireframe-about__main {
+    padding: 4.5rem 2.25rem 5.5rem 2.25rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .wireframe-about__main {
+    padding: 5.5rem 3rem 6.5rem 3rem;
+  }
+}
+
+.wireframe-about__container {
+  max-width: 1240px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Grid 2 cột: Cột trái (Nội dung) & Cột phải (Ảnh) */
+.wireframe-about__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.75rem;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .wireframe-about__grid {
+    grid-template-columns: 1.12fr 0.95fr;
+    gap: 4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .wireframe-about__grid {
+    grid-template-columns: 1.15fr 0.92fr;
+    gap: 5rem;
+  }
+}
+
+/* =========================================================
+   CỘT TRÁI: TIÊU ĐỀ & ĐOẠN VĂN THỤT LỀ
+   ========================================================= */
+.wireframe-about__content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tiêu đề in đậm sans-serif đúng mockup */
+.wireframe-about__title {
+  font-family: var(--font-sans);
+  font-size: clamp(2.15rem, 3.6vw, 2.95rem);
+  font-weight: 800;
+  color: #1a1613;
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+  margin: 0 0 2rem 0;
+}
+
+/* Đoạn văn thụt lề sang phải trên desktop đúng theo ảnh thiết kế */
+.wireframe-about__body {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 960px) {
+  .wireframe-about__body {
+    margin-left: clamp(2.5rem, 5vw, 4.25rem);
+    max-width: 530px;
+  }
+}
+
+.wireframe-about__paragraph {
+  font-size: 0.95rem;
+  line-height: 1.76;
+  color: #2b2520;
+  font-weight: 500;
+  margin: 0 0 1.15rem 0;
+}
+
+.wireframe-about__paragraph:last-of-type {
+  margin-bottom: 1.75rem;
+}
+
+/* =========================================================
+   CỤM KÍCH THÍCH CTA (CALL TO ACTION) ĐỈNH CAO
+   ========================================================= */
+.wireframe-about__cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin-top: 0.5rem;
+}
+
+.wireframe-about__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+/* Style Pill Button */
+.wireframe-about__pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+/* Primary CTA: Cam gạch trên nền be kem #f3ece1 */
+.wireframe-about__pill-btn--primary {
+  background-color: #c05b3a;              /* Cam gạch */
+  color: #f5efe6;                         /* Be nhạt */
+  border: 1px solid rgba(139, 94, 60, 0.3);
+  box-shadow: 0 4px 14px rgba(192, 91, 58, 0.25);
+  position: relative;
+}
+
+.wireframe-about__pill-btn--primary:hover {
+  background-color: #a04a2e;              /* Cam gạch đậm hơn */
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(192, 91, 58, 0.4);
+}
+
+.wireframe-about__pill-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #3b2569;
+  color: #ffffff;
+}
+
+/* Secondary CTA: Pill màu ghi/be nhạt trung tính đúng nút thứ hai trong mockup */
+.wireframe-about__pill-btn--secondary {
+  background-color: #dad1c4;
+  color: #2d241d;
+  border: 1px solid rgba(160, 142, 126, 0.3);
+}
+
+.wireframe-about__pill-btn--secondary:hover {
+  background-color: #cfc4b5;
+  color: #1a1613;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(45, 36, 29, 0.12);
+}
+
+/* Dòng gia tăng uy tín và kích thích giữ phòng */
+.wireframe-about__incentive {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: #63584e;
+  font-weight: 600;
+}
+
+@media (min-width: 600px) {
+  .wireframe-about__incentive {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.25rem;
+  }
+}
+
+.wireframe-about__incentive-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.wireframe-about__check-icon {
+  color: #3b2569;
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   CỘT PHẢI: KHỐI ẢNH 1.JPG BO GÓC MỊN
+   ========================================================= */
+.wireframe-about__visual {
+  width: 100%;
+}
+
+.wireframe-about__img-card {
+  width: 100%;
+  height: 380px;
+  border-radius: 1.75rem;
+  overflow: hidden;
+  position: relative;
+  background-color: #d9cdbd;
+  box-shadow: 0 20px 48px -12px rgba(35, 25, 18, 0.25);
+  border: 1px solid rgba(217, 199, 178, 0.6);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+@media (min-width: 768px) {
+  .wireframe-about__img-card {
+    height: 480px;
+    border-radius: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .wireframe-about__img-card {
+    height: 540px;
+    border-radius: 2.25rem;
+  }
+}
+
+.wireframe-about__img-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 56px -12px rgba(35, 25, 18, 0.3);
+}
+
+.wireframe-about__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wireframe-about__img-card:hover .wireframe-about__img {
+  transform: scale(1.04);
+}
+
+.wireframe-about__fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: #8b5e3c;
+  background-color: #d9cdbd;
+}

@@ -1,0 +1,119 @@
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background);
+}
+
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  z-index: 9999;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+
+.skip-to-content:focus {
+  top: 1rem;
+}
+
+/* Khung chính chứa Hero + Accommodation + About matching DeepSeek mockup */
+.showcase-outer-section {
+  padding-top: 2rem;
+  padding-bottom: 3.5rem;
+  background: linear-gradient(180deg, #ede3d4 0%, var(--color-background) 100%);
+}
+
+@media (min-width: 768px) {
+  .showcase-outer-section {
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+  }
+}
+
+.showcase-container {
+  display: flex;
+  justify-content: center;
+}
+
+.deepseek-master-card {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #f5efe6;
+  border-radius: 2rem;
+  overflow: hidden;
+  border: 1px solid #eadbc8;
+  box-shadow: 0 20px 45px -15px rgba(59, 42, 32, 0.2), 0 0 0 1px rgba(234, 219, 200, 0.5);
+}
+
+@media (min-width: 768px) {
+  .deepseek-master-card {
+    border-radius: 3rem;
+  }
+}
+
+/* Floating Quick Call Button for Mobile */
+.floating-quick-call {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 90;
+}
+
+@media (min-width: 900px) {
+  .floating-quick-call {
+    display: none;
+  }
+}
+
+.floating-quick-call__btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 0.75rem 1.15rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 6px 20px rgba(155, 87, 61, 0.45);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+  animation: floatPulse 3s infinite ease-in-out;
+}
+
+.floating-quick-call__btn:active {
+  transform: scale(0.95);
+}
+
+.floating-quick-call__icon {
+  animation: ring 2s infinite ease-in-out;
+}
+
+@keyframes floatPulse {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes ring {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  10%, 30% {
+    transform: rotate(-15deg);
+  }
+  20%, 40% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(0);
+  }
+}

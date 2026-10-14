@@ -1,0 +1,257 @@
+/* =========================================================
+   GLOBAL CTA BUTTON COMPONENT
+   Signature expanding circle hover animation
+   Thống nhất màu sắc từ bảng màu globals.css
+   Có viền ngoài (border) sắc nét & bo tròn dạng pill
+   ========================================================= */
+
+.cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 10px 18px;
+  min-height: 44px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1.5px solid rgba(155, 87, 61, 0.38);
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1.2;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  display: block;
+  border-radius: 50px;
+  background: var(--color-primary-soft, rgba(155, 87, 61, 0.16));
+  width: 44px;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cta span {
+  position: relative;
+  font-family: var(--font-sans, "Plus Jakarta Sans", sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-text, #2d2925);
+  z-index: 1;
+  transition: color 0.25s ease;
+  white-space: nowrap;
+}
+
+.cta svg {
+  position: relative;
+  top: 0;
+  margin-left: 8px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: var(--color-primary, #9b573d);
+  stroke-width: 2;
+  transform: translateX(-4px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+/* Hover: Vòng tròn nở rộng tràn toàn bộ pill + đổi viền, chữ và icon sang màu trắng */
+.cta:hover {
+  border-color: var(--color-primary, #9b573d);
+  box-shadow: 0 4px 14px rgba(155, 87, 61, 0.2);
+}
+
+.cta:hover:before {
+  width: 100%;
+  background: var(--color-primary, #9b573d);
+}
+
+.cta:hover span {
+  color: #ffffff;
+}
+
+.cta:hover svg {
+  stroke: #ffffff;
+  transform: translateX(0);
+}
+
+.cta:active {
+  transform: scale(0.96);
+}
+
+.cta:disabled,
+.cta[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* =========================================================
+   KÍCH THƯỚC (SIZES)
+   ========================================================= */
+.cta--sm {
+  padding: 6px 14px;
+  min-height: 36px;
+  border-radius: 50px;
+}
+
+.cta--sm:before {
+  width: 36px;
+}
+
+.cta--sm span {
+  font-size: 13.5px;
+}
+
+.cta--sm svg {
+  margin-left: 6px;
+  width: 12px;
+  height: 8px;
+}
+
+.cta--md {
+  padding: 10px 18px;
+  min-height: 44px;
+  border-radius: 50px;
+}
+
+.cta--lg {
+  padding: 12px 24px;
+  min-height: 48px;
+  border-radius: 50px;
+}
+
+.cta--lg:before {
+  width: 48px;
+}
+
+.cta--lg span {
+  font-size: 16px;
+}
+
+.cta--lg svg {
+  margin-left: 10px;
+  width: 14px;
+  height: 10px;
+}
+
+/* =========================================================
+   ĐỒNG BỘ CÁC BIẾN THỂ THEME DÙNG MÀU GLOBALS.CSS
+   ========================================================= */
+.cta--primary,
+.cta--warm,
+.cta--default {
+  border-color: rgba(155, 87, 61, 0.38);
+}
+
+.cta--primary:before,
+.cta--warm:before,
+.cta--default:before {
+  background: var(--color-primary-soft, rgba(155, 87, 61, 0.16));
+}
+
+.cta--primary:hover,
+.cta--warm:hover,
+.cta--default:hover {
+  border-color: var(--color-primary, #9b573d);
+}
+
+.cta--primary:hover:before,
+.cta--warm:hover:before,
+.cta--default:hover:before {
+  background: var(--color-primary, #9b573d);
+}
+
+/* Xanh rừng thông */
+.cta--secondary,
+.cta--forest {
+  border-color: rgba(41, 75, 58, 0.38);
+}
+
+.cta--secondary:before,
+.cta--forest:before {
+  background: var(--color-accent-soft, rgba(41, 75, 58, 0.14));
+}
+
+.cta--secondary span,
+.cta--forest span {
+  color: var(--color-accent, #294b3a);
+}
+
+.cta--secondary svg,
+.cta--forest svg {
+  stroke: var(--color-accent, #294b3a);
+}
+
+.cta--secondary:hover,
+.cta--forest:hover {
+  border-color: var(--color-accent, #294b3a);
+  box-shadow: 0 4px 14px rgba(41, 75, 58, 0.2);
+}
+
+.cta--secondary:hover:before,
+.cta--forest:hover:before {
+  background: var(--color-accent, #294b3a);
+}
+
+.cta--secondary:hover span,
+.cta--forest:hover span {
+  color: #ffffff;
+}
+
+.cta--secondary:hover svg,
+.cta--forest:hover svg {
+  stroke: #ffffff;
+}
+
+/* Outline: phong cách viền thanh lịch */
+.cta--outline {
+  border: 1.5px solid var(--color-border, #e3d6c3);
+  border-radius: 50px;
+}
+
+.cta--outline:before {
+  background: var(--color-primary-soft, rgba(155, 87, 61, 0.12));
+}
+
+.cta--outline:hover {
+  border-color: var(--color-primary, #9b573d);
+}
+
+.cta--outline:hover:before {
+  background: var(--color-primary, #9b573d);
+}
+
+.cta--outline:hover span {
+  color: #ffffff;
+}
+
+.cta--outline:hover svg {
+  stroke: #ffffff;
+}
+
+/* Không viền nếu cần */
+.cta--no-border,
+.cta--ghost {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.btn {
+  composes: cta;
+}

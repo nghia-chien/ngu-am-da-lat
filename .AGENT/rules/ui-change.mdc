@@ -1,0 +1,36 @@
+---
+description: Token-efficient guardrails for scoped UI changes in the Ngu Am Da Lat frontend demo.
+alwaysApply: true
+---
+
+# UI Change Guardrails
+
+## Before editing
+1. Translate the user's request into the smallest concrete change.
+2. Inspect only the relevant component/page, its styles, data/assets, related tests, and current Git diff/status if available. Do not overwrite unrelated user work.
+3. **Do not read all seven Markdown documents by default.** Read a document only when the task needs it:
+   - `project-overview.md` — business scope, page goals, or unverified content.
+   - `architecture.md` — component boundaries, state, or data flow.
+   - `tech-stack.md` — framework, package, dependency, or build-tool decisions.
+   - `coding-standards.md` — coding/style conventions are unclear or broadly changing.
+   - `folder-structure.md` — adding, moving, or renaming files.
+   - `environments.md` — environment variables, configuration, or deployment.
+   - `testing-strategy.md` — test setup or unclear validation expectations.
+   For a local visual tweak, inspect the target implementation and shared design tokens first; read more only if a genuine ambiguity or conflict appears.
+
+## Keep the change in scope
+- Modify only what is necessary for the explicit request. No unrelated refactors, file moves, redesigns, new sections, or extra features.
+- Preserve existing layout, behavior, component patterns, and responsive behavior outside the target area.
+- Reuse existing components, dependencies, and CSS variables. Do not introduce one-off colors or global styles for a local change.
+- Preserve the Vietnamese website and frontend-demo scope unless explicitly asked otherwise. Do not add backend, database, real booking/payment, API integrations, or real form submission without authorization.
+- Use available approved assets in `public/`. Do not invent property details, prices, amenities, testimonials, or real-looking photos.
+- An explicit new user request may override an existing project decision only for the requested change; it does not authorize unrelated changes.
+
+## If scope or requirements conflict
+Prefer the smallest solution that satisfies the request and existing project conventions. Ask before proceeding only when the requested result cannot reasonably be achieved without a material scope expansion. Otherwise, make a conservative choice and state the assumption briefly.
+
+## After editing
+- Review the diff for accidental or unrelated changes.
+- Verify the affected interaction and relevant mobile/desktop layout; run only the relevant checks available (tests, type-check, lint, or build).
+- Never claim a check passed unless it was actually run. Report pre-existing failures separately.
+- In the final response, briefly list changed files, behavior changed, checks actually run, and any important assumption or blocker. Do not provide a long project recap.

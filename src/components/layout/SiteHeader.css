@@ -1,0 +1,458 @@
+/* =========================================================
+   1. DESKTOP - FLOATING NAVBAR (Bên trái)
+   ========================================================= */
+.floating-navbar {
+  position: fixed;
+  top: 24px;
+  left: 40px;
+  transform: none;
+  width: auto;
+  max-width: 800px;
+  height: 60px;
+  background-color: rgba(67, 67, 67, 1);
+  color: #f5efe6;
+  border-radius: 9999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 999;
+  /* transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; */
+}
+
+.floating-navbar--scrolled {
+  background-color: rgba(45, 30, 20, 0.98);
+  box-shadow: 0 20px 42px -8px rgba(25, 15, 10, 0.6),
+    0 0 0 1px rgba(245, 239, 230, 0.2);
+}
+
+.floating-navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 1rem;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .floating-navbar__inner {
+    padding: 0 1.25rem;
+    gap: 1.25rem;
+  }
+}
+
+/* ----- Logo ----- */
+.floating-navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  color: #f5efe6;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.floating-navbar__brand:hover {
+  opacity: 0.85;
+}
+
+.floating-navbar__logo-img {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(245, 239, 230, 0.25);
+  display: block;
+}
+
+.floating-navbar__brand-text {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #f5efe6;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+/* ----- Nav Links (chỉ hiện trên Desktop) ----- */
+.floating-navbar__nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .floating-navbar__nav {
+    display: block;
+  }
+}
+
+.floating-navbar__nav-list {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.floating-navbar__nav-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(245, 239, 230, 0.82);
+  text-decoration: none;
+  padding: 0.4rem 0.25rem;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.floating-navbar__nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #d9b98c;
+  transition: width 0.2s ease, left 0.2s ease;
+  border-radius: 9999px;
+}
+
+.floating-navbar__nav-link:hover {
+  color: #ffffff;
+}
+
+.floating-navbar__nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* ----- Hotline Quick (nằm trong navbar) ----- */
+.floating-navbar__phone-quick {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: rgba(245, 239, 230, 0.85);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.floating-navbar__phone-quick:hover {
+  color: #ffffff;
+  background-color: rgba(245, 239, 230, 0.1);
+}
+
+/* ----- Mobile Hamburger Toggle ----- */
+.floating-navbar__mobile-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem;
+  color: #f5efe6;
+  border-radius: 50%;
+  background: rgba(245, 239, 230, 0.1);
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.floating-navbar__mobile-toggle:hover {
+  background: rgba(245, 239, 230, 0.2);
+}
+
+@media (min-width: 768px) {
+  .floating-navbar__mobile-toggle {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   2. DESKTOP - FLOATING CONTACT BUTTON (Bên phải, tách riêng)
+   ========================================================= */
+.floating-contact-btn {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 999;
+
+  /* Chỉ là nút, không có khối nền bao quanh */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 60px;
+  padding: 0 1.5rem;
+
+  /* Style nút */
+  background-color: #ffffff;
+  color: #3b2a20;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+
+  /* Hiệu ứng nổi khối */
+  box-shadow: 0 16px 36px -10px rgba(35, 22, 14, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+
+  /* Chuyển động mượt */
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-contact-btn:hover {
+  background-color: #f5efe6;
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -10px rgba(35, 22, 14, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.floating-contact-btn:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Trạng thái khi cuộn trang - đồng bộ với navbar */
+.floating-contact-btn--scrolled {
+  background-color: #f5efe6;
+  box-shadow: 0 20px 42px -8px rgba(25, 15, 10, 0.6),
+    0 0 0 1px rgba(245, 239, 230, 0.2);
+}
+
+
+/* =========================================================
+   3. MOBILE - NAVBAR BÌNH THƯỜNG, NỀN TRONG SUỐT 60%
+   ========================================================= */
+@media (max-width: 767px) {
+
+  /* Ghi đè navbar floating → navbar ngang truyền thống */
+  .floating-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    width: 100%;
+    max-width: none;
+    height: 64px;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid rgba(245, 239, 230, 0.1);
+
+    /* Nền trong suốt 60% */
+    background-color: rgba(59, 42, 32, 0.6);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    /* Bỏ đổ bóng floating */
+    box-shadow: none;
+  }
+
+  /* Khi cuộn: tăng độ đặc để dễ đọc chữ */
+  .floating-navbar--scrolled {
+    background-color: rgba(45, 30, 20, 0.85);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .floating-navbar__inner {
+    padding: 0 1rem;
+    height: 100%;
+  }
+
+  /* Logo thu nhỏ cho cân đối */
+  .floating-navbar__logo-img {
+    width: 38px;
+    height: 38px;
+  }
+
+  /* Hotline: thu gọn chỉ còn icon */
+  .floating-navbar__phone-quick {
+    padding: 0.4rem;
+    margin-left: auto;
+    margin-right: 0.35rem;
+  }
+
+  .floating-navbar__phone-quick span {
+    display: none;
+  }
+
+  /* Nút Contact riêng: ẩn trên mobile */
+  .floating-contact-btn {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   4. MOBILE DRAWER MENU
+   ========================================================= */
+.mobile-pill-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0.3s ease;
+}
+
+.mobile-pill-menu--open {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.mobile-pill-menu__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(26, 22, 19, 0.8);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-pill-menu--open .mobile-pill-menu__backdrop {
+  opacity: 1;
+}
+
+.mobile-pill-menu__drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 82%;
+  max-width: 320px;
+  height: 100%;
+  background-color: #3b2a20;
+  color: #f5efe6;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+}
+
+.mobile-pill-menu--open .mobile-pill-menu__drawer {
+  transform: translateX(0);
+}
+
+.mobile-pill-menu__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(245, 239, 230, 0.15);
+}
+
+.mobile-pill-menu__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobile-pill-menu__star {
+  color: #d9b98c;
+}
+
+.mobile-pill-menu__logo {
+  border-radius: 50%;
+}
+
+.mobile-pill-menu__name {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f5efe6;
+}
+
+.mobile-pill-menu__close {
+  padding: 0.4rem;
+  color: rgba(245, 239, 230, 0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-pill-menu__close:hover {
+  color: #ffffff;
+  background-color: rgba(245, 239, 230, 0.1);
+}
+
+.mobile-pill-menu__list {
+  list-style: none;
+  padding: 1.5rem 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.mobile-pill-menu__link {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 500;
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.75rem;
+  color: #f5efe6;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.mobile-pill-menu__link:hover {
+  background-color: rgba(245, 239, 230, 0.1);
+  color: #d9b98c;
+}
+
+.mobile-pill-menu__footer {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(245, 239, 230, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.mobile-pill-menu__call-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: rgba(245, 239, 230, 0.12);
+  color: #f5efe6;
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.mobile-pill-menu__call-btn:hover {
+  background-color: rgba(245, 239, 230, 0.2);
+}
+
+.mobile-pill-menu__cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #ffffff;
+  color: #3b2a20;
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.mobile-pill-menu__cta-btn:hover {
+  background-color: #f5efe6;
+  transform: translateY(-1px);
+}

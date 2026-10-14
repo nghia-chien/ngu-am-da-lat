@@ -1,0 +1,366 @@
+/* =========================================================
+   LOCATION SECTION: HIỆU ỨNG BẢN ĐỒ
+   - Desktop: Hiệu ứng bản đồ "chìm trái, rõ phải", cao tối thiểu 100vh
+   - Mobile: Tách biệt nội dung và bản đồ thành 2 phần rõ ràng,
+     không chồng lấn giúp dễ đọc chữ và dễ tương tác bản đồ
+   ========================================================= */
+
+.location-section {
+  position: relative;
+  min-height: 100vh;
+  background-color: #F5EFE6;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .location-section {
+    min-height: auto;
+    padding-bottom: 2rem;
+  }
+}
+
+/* =========================================================
+   1. BẢN ĐỒ IFRAME GOOGLE MAPS
+   ========================================================= */
+.location-map {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+  box-sizing: border-box;
+}
+
+.location-map__iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Tách biệt bản đồ trên mobile thành một khung riêng biệt bên dưới nội dung */
+@media (max-width: 900px) {
+  .location-map {
+    position: relative;
+    inset: auto;
+    z-index: 1;
+    width: calc(100% - 2.5rem);
+    max-width: 600px;
+    margin: 0.5rem auto 1rem auto;
+    height: 320px;
+    min-height: 300px;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(45, 33, 23, 0.12);
+    border: 1px solid rgba(160, 142, 126, 0.35);
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .location-map {
+    width: calc(100% - 1.5rem);
+    height: 290px;
+    min-height: 270px;
+    border-radius: 1rem;
+  }
+}
+
+/* =========================================================
+   2. OVERLAY: CHÌM TRÁI, RÕ PHẢI TRÊN DESKTOP
+   ========================================================= */
+.location-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 90% 140% at 110% -10%,
+    transparent 0%,
+    transparent 35%,
+    rgba(245, 239, 230, 0.4) 55%,
+    rgba(245, 239, 230, 0.8) 72%,
+    #F5EFE6 88%,
+    #F5EFE6 100%
+  );
+}
+
+/* Trên mobile: ẩn overlay để bản đồ trong khung hiển thị sáng rõ 100% */
+@media (max-width: 900px) {
+  .location-overlay {
+    display: none;
+  }
+}
+
+/* =========================================================
+   3. MARKER CAM ĐẤT #C05B3A CÓ HIỆU ỨNG PULSE
+   ========================================================= */
+.location-marker {
+  position: absolute;
+  right: 24%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+@media (max-width: 1100px) {
+  .location-marker {
+    right: 18%;
+  }
+}
+
+/* Trên mobile: ẩn marker ảo nổi để tránh che khuất bản đồ và không chặn thao tác lướt map */
+@media (max-width: 900px) {
+  .location-marker {
+    display: none;
+  }
+}
+
+.location-marker__dot {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #C05B3A;
+  border: 3.5px solid #ffffff;
+  box-shadow: 0 4px 16px rgba(192, 91, 58, 0.5);
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.location-marker__pulse {
+  position: absolute;
+  left: 11px;
+  top: 11px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: rgba(192, 91, 58, 0.75);
+  transform: translate(-50%, -50%);
+  animation: markerPulseGlow 2.4s infinite cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes markerPulseGlow {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.9;
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(3.5);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4.2);
+    opacity: 0;
+  }
+}
+
+/* Card nhỏ đính kèm marker trên bản đồ */
+.location-marker__card {
+  display: inline-flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 0.45rem 0.85rem;
+  border-radius: 0.85rem;
+  box-shadow: 0 10px 25px rgba(45, 33, 23, 0.18);
+  border: 1px solid rgba(192, 91, 58, 0.3);
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.location-marker__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(45, 33, 23, 0.26);
+}
+
+.location-marker__title {
+  font-family: var(--font-sans);
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: #2b2018;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* =========================================================
+   4. NỘI DUNG CHỮ & NÚT CTA
+   ========================================================= */
+.location-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1240px;
+  margin: auto auto;
+  padding: 4.5rem 1.5rem;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .location-container {
+    padding: 2.25rem 1.25rem 1.25rem 1.25rem;
+    margin: 0;
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .location-container {
+    padding: 1.75rem 0.75rem 1rem 0.75rem;
+  }
+}
+
+.location-content {
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+}
+
+@media (max-width: 900px) {
+  .location-content {
+    max-width: 100%;
+  }
+}
+
+.location-title {
+  font-family: var(--font-sans);
+  font-size: clamp(2.15rem, 3.8vw, 3.1rem);
+  font-weight: 800;
+  color: #1a1613;
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+  margin: 0 0 1.25rem 0;
+}
+
+@media (max-width: 900px) {
+  .location-title {
+    font-size: 1.85rem;
+    line-height: 1.25;
+    margin-bottom: 0.85rem;
+  }
+}
+
+.location-desc {
+  font-size: 0.95rem;
+  line-height: 1.76;
+  color: #4a3f36;
+  margin: 0 0 1.5rem 0;
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .location-desc {
+    font-size: 0.925rem;
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+}
+
+/* Hộp bảo mật & đón tiếp */
+.location-privacy {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border-left: 3.5px solid #9b573d;
+  padding: 0.85rem 1.1rem;
+  border-radius: 0 0.85rem 0.85rem 0;
+  font-size: 0.835rem;
+  color: #5f5247;
+  line-height: 1.55;
+  margin-bottom: 1.75rem;
+  border-top: 1px solid rgba(217, 199, 178, 0.5);
+  border-right: 1px solid rgba(217, 199, 178, 0.5);
+  border-bottom: 1px solid rgba(217, 199, 178, 0.5);
+  box-sizing: border-box;
+}
+
+.location-privacy__icon {
+  color: #9b573d;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.location-privacy strong {
+  color: #2b2018;
+}
+
+/* Cụm nút CTA */
+.location-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .location-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .location-actions .cta {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* =========================================================
+   5. TICKER BAR
+   ========================================================= */
+.wireframe-about__ticker {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  background-color: #1a1613;
+  color: #ffffff;
+  padding: 0.85rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  user-select: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.wireframe-about__ticker-track {
+  display: inline-flex;
+  gap: 3.5rem;
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-transform: lowercase;
+  color: #ffffff;
+  animation: tickerAboutScroll 20s linear infinite;
+  will-change: transform;
+}
+
+.wireframe-about__ticker:hover .wireframe-about__ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes tickerAboutScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

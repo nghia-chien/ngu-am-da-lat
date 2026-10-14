@@ -1,0 +1,208 @@
+/* SECTION 2: ACCOMMODATION (LIGHT) matching Web & Mobile wireframe */
+.wireframe-accommodation {
+  background-color: #EADBC8;
+  padding: 2.75rem 1.25rem 3.5rem 1.25rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .wireframe-accommodation {
+    padding: 2rem 2rem 2rem 2rem;
+  }
+}
+
+.wireframe-accommodation__container {
+  max-width: 1240px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Header: Text ở giữa, Button ở bên phải nhưng đặt thấp hơn text */
+.wireframe-accommodation__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .wireframe-accommodation__header {
+    margin-bottom: 2.25rem;
+    gap: 0.75rem;
+  }
+}
+
+.wireframe-accommodation__header-center,
+.wireframe-accommodation__header-left {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.wireframe-accommodation__badge {
+  display: block;
+  font-size: 0.775rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9b573d;
+  margin-bottom: 0.35rem;
+  text-align: center;
+}
+
+.wireframe-accommodation__title {
+  font-family: var(--font-serif);
+  font-size: 2.15rem;
+  font-weight: 700;
+  color: #3b2a20;
+  line-height: 1.25;
+  text-align: center;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .wireframe-accommodation__title {
+    font-size: 2.65rem;
+  }
+}
+
+/* Button & Dots group bên phải, thấp hơn text */
+.wireframe-accommodation__header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: flex-end;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .wireframe-accommodation__header-right {
+    gap: 1.25rem;
+    margin-top: 0.5rem;
+  }
+}
+
+/* 2 Indicator Dots matching wireframe */
+.wireframe-accommodation__dots-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wireframe-accommodation__circle-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #c8b29e;
+  display: inline-block;
+  transition: background-color 0.2s;
+}
+
+.wireframe-accommodation__circle-dot:first-child {
+  background-color: #8b5e3c;
+}
+
+/* Button xem tất cả ảnh sử dụng cta thống nhất */
+.wireframe-accommodation__btn {
+  display: inline-flex;
+}
+
+/* Cards Container: Desktop Staggered (Items End), Mobile Stacked */
+.wireframe-accommodation__cards-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wireframe-accommodation__cards-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: end;
+    margin-bottom: 2.5rem;
+  }
+}
+
+/* Mobile Button below cards (hidden since header button is visible on mobile) */
+.wireframe-accommodation__mobile-btn-wrap {
+  display: none;
+}
+
+.wireframe-accommodation__btn--mobile {
+  width: 100%;
+  max-width: 280px;
+  justify-content: center;
+}
+
+/* Tag Bar / Divider matching full-width pill bar in wireframe */
+.wireframe-accommodation__tag-bar {
+  background-color: #3b2a20;
+  padding: 0.75rem 1.25rem;
+  /* border-radius: 9999px; */
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 20px rgba(59, 42, 32, 0.2);
+}
+
+.wireframe-accommodation__tag-track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  animation: scrollTags 25s linear infinite;
+}
+
+.wireframe-accommodation__tag-bar:hover .wireframe-accommodation__tag-track {
+  animation-play-state: paused;
+}
+
+.wireframe-accommodation__tag-pill {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: #f5efe6;
+  background-color: rgba(245, 239, 230, 0.12);
+  padding: 0.3rem 0.9rem;
+  border-radius: 9999px;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+@keyframes scrollTags {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Notice box */
+.wireframe-accommodation__notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background-color: rgba(155, 87, 61, 0.08);
+  border: 1px dashed #9b573d;
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+  color: #695e54;
+  line-height: 1.6;
+}
+
+.wireframe-accommodation__notice-icon {
+  color: #9b573d;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.wireframe-accommodation__notice-text strong {
+  color: #3b2a20;
+}
