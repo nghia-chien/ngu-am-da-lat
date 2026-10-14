@@ -7,7 +7,6 @@ import {
   AlertCircle,
   CheckCircle2,
   Clock,
-  Sparkles,
   HeartHandshake,
   Flame,
 } from 'lucide-react';
@@ -85,10 +84,7 @@ export const ContactSection: React.FC = () => {
       <div className="contact-container">
         {/* Header phần liên hệ */}
         <div className="contact-header">
-          <div className="contact-badge">
-            <Sparkles size={14} className="contact-badge__icon" />
-            <span>Kết Nối Lưu Trú</span>
-          </div>
+          
           <h2 className="contact-title">
             Gặp Nhau Ở Ngủ Ấm
           </h2>

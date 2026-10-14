@@ -1,33 +1,49 @@
-/* DeepSeek Staggered Card Styles matching wireframe */
+/* =========================================================
+   DEEPSEEK STAGGERED CARD STYLES (ACCOMMODATION SECTION)
+   Thiết kế thẻ so le chân 600px - 500px - 400px với nội dung phong phú,
+   không gian thoáng đãng, đầy đủ text, chip tiện ích và nút CTA
+   ========================================================= */
+
 .deepseek-stagger-card {
   background-color: #3b2a20;
   border-radius: 1.5rem;
-  padding: 1rem;
+  padding: 1.35rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   position: relative;
   overflow: hidden;
-  text-decoration: none;
-  box-shadow: 0 10px 25px rgba(59, 42, 32, 0.15);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  box-shadow: 0 10px 25px rgba(59, 42, 32, 0.16);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
   border: 1px solid rgba(234, 219, 200, 0.4);
   width: 100%;
+  box-sizing: border-box;
 }
 
 .deepseek-stagger-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 36px rgba(59, 42, 32, 0.25);
+  box-shadow: 0 18px 40px rgba(45, 33, 23, 0.28);
 }
 
-/* On Mobile (< 768px): Cards stack vertically with uniform comfortable height */
-.deepseek-stagger-card--tall,
-.deepseek-stagger-card--medium,
-.deepseek-stagger-card--short {
-  height: 230px;
+/* Link overlay cho phép click toàn thẻ */
+.deepseek-stagger-card__link-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  cursor: pointer;
 }
 
-/* On Desktop (>= 768px): Signature Staggered Heights (330px / 260px / 205px) */
+/* Trên Mobile (< 768px): Thẻ có chiều cao thoải mái chứa đầy đủ nội dung */
+@media (max-width: 767px) {
+  .deepseek-stagger-card--tall,
+  .deepseek-stagger-card--medium,
+  .deepseek-stagger-card--short {
+    height: 350px;
+    min-height: 330px;
+  }
+}
+
+/* Trên Desktop (>= 768px): Chiều cao so le chân đặc trưng (600px / 500px / 400px) */
 @media (min-width: 768px) {
   .deepseek-stagger-card--tall {
     height: 600px;
@@ -42,13 +58,15 @@
   }
 }
 
+/* Ảnh nền không gian */
 .deepseek-stagger-card__img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
 }
 
 .deepseek-stagger-card:hover .deepseek-stagger-card__img {
@@ -63,80 +81,173 @@
   align-items: center;
   justify-content: center;
   color: #f5efe6;
+  z-index: 0;
 }
 
+/* Gradient Overlay tối màu mượt mà phía dưới */
 .deepseek-stagger-card__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(45, 30, 20, 0.88) 0%, rgba(45, 30, 20, 0.2) 60%, transparent 100%);
+  background: linear-gradient(
+    to top,
+    rgba(22, 17, 14, 0.94) 0%,
+    rgba(22, 17, 14, 0.72) 42%,
+    rgba(22, 17, 14, 0.22) 72%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+.deepseek-stagger-card__badge {
+  background: rgba(26, 22, 19, 0.68);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #f5efe6;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.deepseek-stagger-card__status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #48bb78;
+  box-shadow: 0 0 8px rgba(72, 187, 120, 0.8);
+}
+
+/* 2. Vùng nội dung nửa dưới của thẻ */
+.deepseek-stagger-card__content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: 100%;
+  margin-top: auto;
   pointer-events: none;
 }
 
-/* Floating Bottom Pill */
-.deepseek-stagger-card__pill {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: rgba(245, 239, 230, 0.94);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 0.55rem 1rem;
-  border-radius: 9999px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.2s ease;
-}
-
-.deepseek-stagger-card:hover .deepseek-stagger-card__pill {
-  background-color: #ffffff;
-}
-
-.deepseek-stagger-card__pill-info {
+.deepseek-stagger-card__header {
   display: flex;
   flex-direction: column;
-  min-width: 0;
+  gap: 0.25rem;
 }
 
 .deepseek-stagger-card__title {
-  color: #3b2a20;
-  font-size: 0.875rem;
-  font-weight: 700;
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-family: var(--font-sans);
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .deepseek-stagger-card__sub {
-  color: #8b5e3c;
-  font-size: 0.7rem;
+  font-size: 0.875rem;
+  color: #f1ded4;
   font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.35;
+  margin: 0;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
-.deepseek-stagger-card__circle-btn {
-  width: 28px;
-  height: 28px;
+.deepseek-stagger-card__desc {
+  font-size: 0.825rem;
+  color: rgba(245, 239, 230, 0.9);
+  line-height: 1.55;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Feature chips */
+.deepseek-stagger-card__features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.15rem;
+}
+
+.deepseek-stagger-card__feature-chip {
+  font-size: 0.725rem;
+  font-weight: 600;
+  color: #f5efe6;
+  background-color: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+/* 3. Nút hành động CTA phía dưới card */
+.deepseek-stagger-card__footer {
+  margin-top: 0.45rem;
+  width: 100%;
+}
+
+.deepseek-stagger-card__cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(245, 239, 230, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #1a1613;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.55rem 1.15rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.deepseek-stagger-card:hover .deepseek-stagger-card__cta-btn {
+  background-color: var(--color-primary, #9b573d);
+  color: #ffffff;
+  border-color: var(--color-primary, #9b573d);
+  box-shadow: 0 6px 20px rgba(192, 91, 58, 0.4);
+}
+
+.deepseek-stagger-card__cta-icon-wrap {
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   background-color: #c05b3a;
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  margin-left: 0.5rem;
   transition: transform 0.25s ease, background-color 0.25s ease;
+  flex-shrink: 0;
 }
 
-.deepseek-stagger-card:hover .deepseek-stagger-card__circle-btn {
-  transform: rotate(45deg);
-  background-color: #9b573d;
+.deepseek-stagger-card:hover .deepseek-stagger-card__cta-icon-wrap {
+  background-color: #ffffff;
+  color: #9b573d;
+  transform: translate(2px, -2px);
 }
 
-/* Original Detailed Card Styles */
+/* =========================================================
+   DETAILED CARD STYLES (STANDARD VIEW & UNIT TESTS)
+   ========================================================= */
 .accommodation-card {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);

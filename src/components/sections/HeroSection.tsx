@@ -1,24 +1,19 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { siteMetadata } from '../../data/siteContent';
-import { Phone, ArrowDown, ImageOff, Sparkles, Flame, Sunset, ArrowUpRight } from 'lucide-react';
+import { Phone, ArrowDown, ImageOff,   ArrowUpRight } from 'lucide-react';
 import './HeroSection.css';
 
 const HERO_SLIDES = [
   { id: 'main', src: siteMetadata.heroImage || '/images/rooms/san-vuon-bep-lua.jpg',
-    alt: 'Sân vườn bếp lửa hoàng hôn', tag: { icon: 'sunset', label: 'View đồi & Sân vườn' } },
+    alt: 'Sân vườn bếp lửa hoàng hôn', tag: {    label: 'View đồi & Sân vườn' } },
   { id: 'phong-ngu', src: '/images/rooms/1.jpg',
-    alt: 'Phòng ngủ ấm cúng', tag: { icon: 'flame', label: 'Phòng ngủ gỗ mộc' } },
+    alt: 'Phòng ngủ ấm cúng', tag: {  label: 'Phòng ngủ gỗ mộc' } },
   { id: 'rap-phim', src: '/images/rooms/2.jpg',
-    alt: 'Rạp phim Netflix', tag: { icon: 'sparkles', label: 'Rạp phim Netflix' } },
+    alt: 'Rạp phim Netflix', tag: {  label: 'Rạp phim Netflix' } },
   // { id: 'gian-bep', src: '/images/rooms/khong-gian-bep-an.jpg',
   //   alt: 'Gian bếp gia đình', tag: { icon: 'flame', label: 'Gian bếp gia đình' } },
 ];
 
-const TAG_ICONS: Record<string, React.ReactNode> = {
-  sunset: <Sunset size={14} />,
-  flame: <Flame size={14} />,
-  sparkles: <Sparkles size={14} />,
-};
 
 export const HeroSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -55,11 +50,15 @@ export const HeroSection: React.FC = () => {
         <div className="wireframe-hero__left">
 
           <h1 className="wireframe-hero__title">
-<br /><br />
-
-            Về Đà Lạt, <br />
-            <span className="wireframe-hero__title-accent">Ngủ Thật Ấm</span> &amp; Bình Yên.
-          </h1>
+            <br />
+  <span className="wireframe-hero__title-line">Về Đà Lạt,</span>
+  <br />
+  <span className="wireframe-hero__title-line">
+    <span className="wireframe-hero__title-accent">Ngủ Thật Ấm</span>
+  </span>
+  <br />
+  <span className="wireframe-hero__title-line">&amp; Bình Yên.</span>
+</h1>
 
           <div className="wireframe-hero__bottom">
             <p className="wireframe-hero__bottom-desc">
@@ -119,7 +118,7 @@ export const HeroSection: React.FC = () => {
             </a>
 
             <div className="wireframe-hero__tag">
-              {TAG_ICONS[activeSlide.tag.icon]}
+             
               <span>{activeSlide.tag.label}</span>
             </div>
 

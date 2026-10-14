@@ -17,12 +17,6 @@ export const AccommodationSection: React.FC = () => {
           </div>
 
           <div className="wireframe-accommodation__header-right">
-            {/* 2 Circular indicator dots */}
-            <div className="wireframe-accommodation__dots-group" aria-hidden="true">
-              <span className="wireframe-accommodation__circle-dot" />
-              <span className="wireframe-accommodation__circle-dot" />
-            </div>
-
             <Button href="#gallery" size="sm">
               Xem tất cả ảnh
             </Button>
@@ -37,6 +31,7 @@ export const AccommodationSection: React.FC = () => {
               item={item}
               variant="staggered"
               heightLevel={heightLevels[idx % heightLevels.length]}
+              index={idx}
             />
           ))}
         </div>
@@ -51,3 +46,5 @@ export const AccommodationSection: React.FC = () => {
     </section>
   );
 };
+
+export default AccommodationSection;

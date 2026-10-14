@@ -8,23 +8,38 @@ interface AccommodationCardProps {
   item: AccommodationItem;
   variant?: 'staggered' | 'detailed';
   heightLevel?: 'tall' | 'medium' | 'short';
+  index?: number;
 }
 
 export const AccommodationCard: React.FC<AccommodationCardProps> = ({
   item,
   variant = 'detailed',
   heightLevel = 'tall',
+  index = 0,
 }) => {
   const [imgError, setImgError] = useState(false);
 
+  // Nhãn danh mục đánh số theo thứ tự giúp định vị không gian
+  const categoryLabels = ['01 • Không Gian Ngủ', '02 • Rạp Phim Thư Giãn', '03 • Bếp Ăn Gia Đình'];
+  const categoryBadge = categoryLabels[index % categoryLabels.length] || `0${index + 1} • Phòng Nghỉ`;
+
+  // Số lượng đặc điểm hiển thị phù hợp với độ cao của từng card (600px / 500px / 400px)
+  const featureLimit = heightLevel === 'tall' ? 3 : heightLevel === 'medium' ? 2 : 2;
+
   if (variant === 'staggered') {
     return (
-      <a
-        href="#contact"
+      <article
         className={`deepseek-stagger-card deepseek-stagger-card--${heightLevel}`}
         id={`card-${item.id}`}
-        title={`Xem chi tiết ${item.name}`}
       >
+        {/* Link overlay cho phép bấm vào bất cứ đâu trên card */}
+        <a
+          href="#contact"
+          className="deepseek-stagger-card__link-overlay"
+          aria-label={`Xem chi tiết và giữ chỗ ${item.name}`}
+        />
+
+        {/* Ảnh nền không gian */}
         {!imgError ? (
           <img
             src={item.image}
@@ -39,24 +54,46 @@ export const AccommodationCard: React.FC<AccommodationCardProps> = ({
           </div>
         )}
 
-        {/* Gradient Overlay */}
+        {/* Lớp gradient overlay tăng tương phản cho chữ */}
         <div className="deepseek-stagger-card__overlay" />
 
-        {/* Floating Bottom Pill matching DeepSeek mockup */}
-        <div className="deepseek-stagger-card__pill">
-          <div className="deepseek-stagger-card__pill-info">
-            <span className="deepseek-stagger-card__title">{item.name}</span>
-            {/* <span className="deepseek-stagger-card__sub">{item.subtitle}</span> */}
+
+
+        {/* Vùng nội dung phong phú ở nửa dưới card */}
+        <div className="deepseek-stagger-card__content">
+          <div className="deepseek-stagger-card__header">
+            <h3 className="deepseek-stagger-card__title">{item.name}</h3>
+            <p className="deepseek-stagger-card__sub">{item.subtitle}</p>
           </div>
-          <div className="deepseek-stagger-card__circle-btn" aria-hidden="true">
-            <ArrowUpRight size={16} />
+
+          {/* Mô tả chi tiết cho card 600px và 500px để không bị trống */}
+
+          {/* Tag đặc điểm tiện ích */}
+          {item.features && item.features.length > 0 && (
+            <div className="deepseek-stagger-card__features">
+              {item.features.slice(0, featureLimit).map((feat, fIdx) => (
+                <span key={fIdx} className="deepseek-stagger-card__feature-chip">
+                  {feat}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Nút hành động CTA chuyển đổi trực quan */}
+          <div className="deepseek-stagger-card__footer">
+            <div className="deepseek-stagger-card__cta-btn">
+              <span>Đặt phòng giữ chỗ</span>
+              <div className="deepseek-stagger-card__cta-icon-wrap" aria-hidden="true">
+                <ArrowUpRight size={15} />
+              </div>
+            </div>
           </div>
         </div>
-      </a>
+      </article>
     );
   }
 
-  // Detailed standard card (used in tests or detailed views)
+  // Detailed standard card (được dùng trong tests hoặc trang chi tiết)
   return (
     <article className="accommodation-card" id={`card-${item.id}`}>
       <div className="accommodation-card__image-wrap">

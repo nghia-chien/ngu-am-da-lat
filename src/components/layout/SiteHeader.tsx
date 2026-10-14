@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { siteMetadata } from '../../data/siteContent';
-import { Sparkles, Menu, X, Phone, ArrowUpRight } from 'lucide-react';
+import { Menu, X, Phone, ArrowUpRight } from 'lucide-react';
 import './SiteHeader.css';
 
 export const SiteHeader: React.FC = () => {
@@ -111,7 +111,7 @@ export const SiteHeader: React.FC = () => {
         <div className="mobile-pill-menu__drawer">
           <div className="mobile-pill-menu__header">
             <div className="mobile-pill-menu__brand">
-              <Sparkles size={18} className="mobile-pill-menu__star" />
+              
               <img
                 src={siteMetadata.logoUrl}
                 alt="Ngủ Ấm Ở Đà Lạt Logo"

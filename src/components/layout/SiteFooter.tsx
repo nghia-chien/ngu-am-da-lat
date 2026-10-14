@@ -1,6 +1,6 @@
 import React from 'react';
 import { navigationLinks, siteMetadata } from '../../data/siteContent';
-import { Phone, MapPin, Sparkles, Heart } from 'lucide-react';
+import { Phone, MapPin,  Heart } from 'lucide-react';
 import './SiteFooter.css';
 
 export const SiteFooter: React.FC = () => {
@@ -25,10 +25,7 @@ export const SiteFooter: React.FC = () => {
             </div>
           </div>
           <p className="site-footer__bio">{siteMetadata.shortBio}</p>
-          <div className="site-footer__badge">
-            <Sparkles size={14} />
-            <span>Chốn nghỉ ngơi ấm áp giữa lòng phố hoa</span>
-          </div>
+          
         </div>
 
         {/* Navigation Column */}
